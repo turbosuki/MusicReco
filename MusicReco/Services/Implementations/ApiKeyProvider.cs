@@ -1,4 +1,4 @@
-namespace MusicReco;
+namespace MusicReco.Services.Implementations;
 
 internal sealed class ApiKeyProvider : IApiKeyProvider
 {
@@ -8,8 +8,10 @@ internal sealed class ApiKeyProvider : IApiKeyProvider
     {
         var key = TryGetApiKeyFromKeychain();
         if (!string.IsNullOrWhiteSpace(key))
+        {
             return key.Trim();
-
+        }
+        
         return (Environment.GetEnvironmentVariable("LASTFM_API_KEY") ?? string.Empty).Trim();
     }
 

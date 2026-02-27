@@ -1,4 +1,4 @@
-namespace MusicReco;
+namespace MusicReco.Domain;
 
 internal static class LastFmLinks
 {

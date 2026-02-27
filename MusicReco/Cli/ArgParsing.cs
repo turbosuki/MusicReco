@@ -1,4 +1,4 @@
-namespace MusicReco;
+namespace MusicReco.Cli;
 
 internal static class ArgParsing
 {

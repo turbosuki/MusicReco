@@ -1,4 +1,4 @@
-namespace MusicReco;
+namespace MusicReco.Cli;
 
 internal sealed class CliOptions
 {

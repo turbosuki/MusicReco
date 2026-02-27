@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace MusicReco;
+namespace MusicReco.Services.Implementations;
 
 internal static class ProcessHelpers
 {
@@ -15,7 +15,9 @@ internal static class ProcessHelpers
         };
 
         foreach (var arg in args)
+        {
             psi.ArgumentList.Add(arg);
+        }
 
         using var p = Process.Start(psi) ?? throw new InvalidOperationException($"Failed to start {fileName}");
         var stdout = p.StandardOutput.ReadToEnd();
@@ -23,7 +25,9 @@ internal static class ProcessHelpers
         p.WaitForExit();
 
         if (p.ExitCode != 0)
+        {
             throw new InvalidOperationException($"{fileName} failed: {stderr.Trim()}");
+        }
 
         return stdout;
     }

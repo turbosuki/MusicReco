@@ -1,3 +1,5 @@
+using MusicReco.Domain;
+
 namespace MusicReco;
 
 internal sealed class RecommendationEngine(ILastFmClient lastFmClient) : IRecommendationEngine

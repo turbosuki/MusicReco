@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace MusicReco;
+namespace MusicReco.Services.Implementations;
 
 internal sealed class MacUrlOpener : IUrlOpener
 {

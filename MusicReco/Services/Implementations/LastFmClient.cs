@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace MusicReco;
+namespace MusicReco.Services.Implementations;
 
 internal sealed class LastFmClient(HttpClient http, string apiKey) : ILastFmClient
 {
@@ -30,11 +30,15 @@ internal sealed class LastFmClient(HttpClient http, string apiKey) : ILastFmClie
         foreach (var item in EnumerateAsArray(artistsElem))
         {
             if (!item.TryGetProperty("name", out var nameElem))
+            {
                 continue;
+            }
 
             var name = (nameElem.GetString() ?? string.Empty).Trim();
             if (!string.IsNullOrWhiteSpace(name))
+            {
                 list.Add(name);
+            }
         }
 
         return DistinctPreserveOrder(list);
@@ -63,11 +67,15 @@ internal sealed class LastFmClient(HttpClient http, string apiKey) : ILastFmClie
         foreach (var item in EnumerateAsArray(albumsElem))
         {
             if (!item.TryGetProperty("name", out var nameElem))
+            {
                 continue;
+            }
 
             var name = (nameElem.GetString() ?? string.Empty).Trim();
             if (!string.IsNullOrWhiteSpace(name))
+            {
                 list.Add(name);
+            }
         }
 
         return DistinctPreserveOrder(list);
@@ -108,7 +116,9 @@ internal sealed class LastFmClient(HttpClient http, string apiKey) : ILastFmClie
         }
 
         if (elem.ValueKind == JsonValueKind.Object)
+        {
             yield return elem;
+        }
     }
 
     private static List<string> DistinctPreserveOrder(IEnumerable<string> input)

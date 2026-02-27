@@ -1,4 +1,4 @@
-namespace MusicReco;
+namespace MusicReco.Domain;
 
 internal sealed record NowPlaying(string Track, string Artist);
 

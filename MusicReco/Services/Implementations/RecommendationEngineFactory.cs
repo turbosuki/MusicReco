@@ -1,3 +1,5 @@
+using MusicReco.Services.Implementations;
+
 namespace MusicReco;
 
 internal sealed class RecommendationEngineFactory(HttpClient httpClient) : IRecommendationEngineFactory

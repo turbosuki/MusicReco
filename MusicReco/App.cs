@@ -1,3 +1,6 @@
+using MusicReco.Cli;
+using MusicReco.Domain;
+
 namespace MusicReco;
 
 internal sealed class App(
@@ -13,7 +16,7 @@ internal sealed class App(
         try
         {
             var nowPlaying = nowPlayingProvider.GetNowPlaying();
-            Console.WriteLine($"🎧 Now playing: {nowPlaying.Track} — {nowPlaying.Artist}");
+            Console.WriteLine($"🎧 Now playing: {nowPlaying.Track} - {nowPlaying.Artist}");
 
             var apiKey = apiKeyProvider.GetLastFmApiKey();
             if (string.IsNullOrWhiteSpace(apiKey))

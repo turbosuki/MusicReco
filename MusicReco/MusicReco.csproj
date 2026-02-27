@@ -7,4 +7,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <Compile Remove="MusicReco.Tests/**/*.cs" />
+        <EmbeddedResource Remove="MusicReco.Tests/**/*" />
+        <None Remove="MusicReco.Tests/**/*" />
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
-namespace MusicReco;
+using MusicReco.Domain;
+
+namespace MusicReco.Services.Implementations;
 
 internal sealed class MusicNowPlayingProvider : INowPlayingProvider
 {
@@ -18,11 +20,15 @@ internal sealed class MusicNowPlayingProvider : INowPlayingProvider
 
         var output = ProcessHelpers.RunProcessCaptureStdout("osascript", ["-e", script]).Trim();
         if (string.IsNullOrWhiteSpace(output))
+        {
             throw new InvalidOperationException("Music is not playing. Start a song in Apple Music and try again.");
+        }
 
         var parts = output.Split("||", 2, StringSplitOptions.None);
         if (parts.Length != 2 || string.IsNullOrWhiteSpace(parts[1]))
+        {
             throw new InvalidOperationException("Could not read track/artist from Apple Music.");
+        }
 
         return new NowPlaying(parts[0].Trim(), parts[1].Trim());
     }

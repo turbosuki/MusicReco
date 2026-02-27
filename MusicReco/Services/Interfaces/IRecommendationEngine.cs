@@ -1,3 +1,5 @@
+using MusicReco.Domain;
+
 namespace MusicReco;
 
 internal interface IRecommendationEngine
